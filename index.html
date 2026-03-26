@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StarterKit Club</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">⚡ StarterKit Club</div>
+    <button class="button">Join Now</button>
+  </div>
+
+  <div class="hero">
+    <p class="hero-tag">New kit every month</p>
+    <h1>Stop rebuilding the <span>same boilerplate</span></h1>
+    <p class="hero-sub">Ship your next project in hours, not weeks. Production-ready code templates delivered monthly.</p>
+    <button class="button hero-btn">Join for $19/month →</button>
+  </div>
+
+  <div class="kits">
+    <p class="section-tag">What's inside</p>
+    <h2>Everything you need to ship fast</h2>
+    <div class="kit-grid">
+
+      <div class="kit-card reveal">
+        <div class="kit-icon">🚀</div>
+        <h3>Next.js Boilerplate</h3>
+        <p>Auth, billing, and database ready to deploy in minutes.</p>
+      </div>
+
+      <div class="kit-card reveal">
+        <div class="kit-icon">🤖</div>
+        <h3>AI Chatbot Starter</h3>
+        <p>OpenAI integration with streaming responses built in.</p>
+      </div>
+
+      <div class="kit-card reveal">
+        <div class="kit-icon">📋</div>
+        <h3>Job Board Template</h3>
+        <p>Post, apply flow and admin panel included.</p>
+      </div>
+
+    </div>
+  </div>
+  <!-- CUSTOM POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <p class="popup-title">You're early 🎉</p>
+    <p class="popup-sub">We're launching soon. Drop your email and we'll notify you first.</p>
+    <input type="email" class="popup-input" placeholder="your@email.com">
+    <button class="button popup-btn">Notify me</button>
+    <p class="popup-close" id="closePopup">No thanks</p>
+  </div>
+</div>
+<script>
+  const popup = document.getElementById("popup")
+  const closePopup = document.getElementById("closePopup")
+  const buttons = document.querySelectorAll(".button:not(.popup-btn)")
+
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      popup.classList.add("active")
+    })
+  })
+
+  closePopup.addEventListener("click", function() {
+    popup.classList.remove("active")
+  })
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+      }
+    })
+  }, { threshold: 0.15 })
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+</script>
+</body>
+</html>
